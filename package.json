@@ -1,0 +1,31 @@
+{
+  "name": "kasei.aoki.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^11.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "uikit": "^3.7.0",
+    "bulma": "^0.9.1",
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaseiaoki/kaseiaoki.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaseiaoki/kaseiaoki.github.io/issues"
+  },
+  "homepage": "https://github.com/kaseiaoki/kaseiaoki.github.io#readme"
+}
