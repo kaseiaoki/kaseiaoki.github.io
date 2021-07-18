@@ -1,18 +1,17 @@
 import { useState } from "react";
+const textDiff = require('text-diff');
 
 export default function Diff() {
-    const [textA, textValueA] = useState()
-    const [textB, textValueB] = useState()
+    const [textA, textValueA] = useState("")
+    const [textB, textValueB] = useState("")
 
-    const diff = ((textA, textB) => {
-        console.log(textA, textB)
-        return textA
+    const diff = ((primary, comparison) => {
+        const td = new textDiff(); // options may be passed to constructor; see below
+        const textDiffMain = td.main(primary, comparison); // produces diff array
+        const tdHtml = td.prettyHtml(textDiffMain); // produces a formatted HTML string
+        console.log(tdHtml);
+        return tdHtml
       })
-
-    const restText = (() => {
-        textA = ""
-        textB = ""
-    })
 
     return (
         <>
@@ -34,19 +33,19 @@ export default function Diff() {
                     <textarea value={textB} onChange={(e) => textValueB(e.target.value)} className="textarea is-medium" placeholder="e.g. How low, world"></textarea>
                 </div>
             </div>
-            <button className="button is-danger is-outlined" onClick={() => (textValueA("") , textValueB(""))}>Reset</button>
+            <button className="button is-info is-medium is-outlined" onClick={() => (textValueA("") , textValueB(""))}>Reset</button>
             <div className="columns mt-4">
-            <div className="column">
-                <div className="block ml-3">
-                    {diff(textA, textB)}
+                <div className="column">
+                    <div className="block ml-3">
+                    <div dangerouslySetInnerHTML={{ __html: diff(textA, textB)}} />
+                    </div>
+                </div>
+                <div className="column">
+                    <div className="block ml-3">
+                        <div dangerouslySetInnerHTML={{ __html:  diff(textB, textA)}} />
+                    </div>
                 </div>
             </div>
-            <div className="column">
-                <div className="block ml-3">
-                    {diff(textB,textA)}
-                </div>
-            </div>
-        </div>
         </section>
         </>
     );

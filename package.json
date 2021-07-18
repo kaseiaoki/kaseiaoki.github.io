@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bulma": "^0.9.1",
     "next": "latest",
+    "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "uikit": "^3.7.0",
-    "bulma": "^0.9.1",
-    "node-sass": "^5.0.0"
+    "text-diff": "^1.0.1",
+    "uikit": "^3.7.0"
   },
   "devDependencies": {},
   "scripts": {
