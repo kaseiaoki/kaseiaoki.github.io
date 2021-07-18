@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 export default function Diff() {
-    const [valueA, valueB] = "";
-    const findDiff = () => {
-       
-      };
+    const [textA, textValueA] = useState()
+    const [textB, textValueB] = useState()
+    const findDiff = (textA, textB) => {
+       console.log(textA, textB)
+    };
     return (
         <>
         <section>
@@ -19,14 +20,14 @@ export default function Diff() {
         <section style={{ padding: '1vw',height: '100vw' }}>
             <div className="columns">
                 <div className="column">
-                    <textarea value={valueA} className="textarea is-medium" placeholder="e.g. Hello world"></textarea>
+                    <textarea onChange={(e) => textValueA(e.target.value)}  className="textarea is-medium" placeholder="e.g. Hello world"></textarea>
                 </div>
                 <div className="column">
-                    <textarea value={valueB} className="textarea is-medium" placeholder="e.g. How low, world"></textarea>
+                    <textarea onChange={(e) => textValueB(e.target.value)} className="textarea is-medium" placeholder="e.g. How low, world"></textarea>
                 </div>
             </div>
             
-            <button className="button is-primary is-outlined" onClick={findDiff}>Find diff</button>
+            <button className="button is-primary is-outlined" onClick={() => findDiff(textA, textB)}>Find diff</button>
         </section>
         </>
     );
