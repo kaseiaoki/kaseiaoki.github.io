@@ -6,9 +6,9 @@ export default function Diff() {
     const [textB, textValueB] = useState("")
 
     const diff = ((primary, comparison) => {
-        const td = new textDiff(); // options may be passed to constructor; see below
-        const textDiffMain = td.main(primary, comparison); // produces diff array
-        const tdHtml = td.prettyHtml(textDiffMain); // produces a formatted HTML string
+        const td = new textDiff(); 
+        const textDiffMain = td.main(primary, comparison); 
+        const tdHtml = td.prettyHtml(textDiffMain); 
         console.log(tdHtml);
         return tdHtml
       })
@@ -47,6 +47,21 @@ export default function Diff() {
                 </div>
             </div>
         </section>
+        <style>
+        {`
+         span {
+            font-size: 1.5em;   
+         }
+         ins {
+            background-color: hsl(141, 53%, 53%, 55%);
+            font-size: 1.6em;
+         }
+         del {
+            background-color: hsl(348, 100%, 61%, 55%);
+            font-size: 1.6em;
+         }
+        `}
+        </style>
         </>
     );
   }
