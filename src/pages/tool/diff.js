@@ -9,7 +9,6 @@ export default function Diff() {
         const td = new textDiff(); 
         const textDiffMain = td.main(primary, comparison); 
         const tdHtml = td.prettyHtml(textDiffMain); 
-        console.log(tdHtml);
         return tdHtml
       })
 
@@ -55,6 +54,7 @@ export default function Diff() {
          ins {
             background-color: hsl(141, 53%, 53%, 55%);
             font-size: 1.6em;
+            text-decoration: none;
          }
          del {
             background-color: hsl(348, 100%, 61%, 55%);
