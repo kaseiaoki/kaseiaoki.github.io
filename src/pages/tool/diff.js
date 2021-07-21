@@ -1,17 +1,28 @@
 import { useState } from "react";
 const textDiff = require('text-diff');
+const diff = require('diff');
+
 const emojiRegex = require('emoji-regex/RGI_Emoji');
 export default function Diff() {
     const [textA, textValueA] = useState("")
     const [textB, textValueB] = useState("")
 
-    const diff = ((primary, comparison) => {
+    const diffStates = ((primary, comparison) => {
         const p = emojiConvertToTofu(primary);
         const c = emojiConvertToTofu(comparison);
-        const td = new textDiff(); 
-        const textDiffMain = td.main(p, c); 
-        const tdHtml = td.prettyHtml(textDiffMain); 
-        return tdHtml
+        // const p = primary;
+        // const c = comparison;
+        const td = diff.diffChars(p, c); 
+        // const textDiffMain = td.main(p, c); 
+        // const tdHtml = td.prettyHtml(textDiffMain); 
+        let text = "";
+        td.forEach(function(part){
+            text += part.added ? '<ins>' + part.value + '</ins>' :
+                    part.removed ? '<del>' + part.value + '</del>' :
+                    '<span>' + part.value + '</span>';
+            
+          });
+          return text
       })
     
     const emojiConvertToTofu = ((text) => {
@@ -51,12 +62,12 @@ export default function Diff() {
             <div className="columns mt-4">
                 <div className="column">
                     <div className="block ml-3">
-                    <div dangerouslySetInnerHTML={{ __html: diff(textA, textB)}} />
+                    <div dangerouslySetInnerHTML={{ __html: diffStates(textA, textB)}} />
                     </div>
                 </div>
                 <div className="column">
                     <div className="block ml-3">
-                        <div dangerouslySetInnerHTML={{ __html:  diff(textB, textA)}} />
+                        <div dangerouslySetInnerHTML={{ __html:  diffStates(textB, textA)}} />
                     </div>
                 </div>
             </div>

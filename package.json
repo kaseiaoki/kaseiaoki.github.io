@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bulma": "^0.9.1",
+    "diff": "^5.0.0",
     "emoji-regex": "^9.2.2",
     "next": "latest",
     "node-sass": "^5.0.0",
