@@ -1,16 +1,31 @@
 import { useState } from "react";
 const textDiff = require('text-diff');
-
+const emojiRegex = require('emoji-regex/RGI_Emoji');
 export default function Diff() {
     const [textA, textValueA] = useState("")
     const [textB, textValueB] = useState("")
 
     const diff = ((primary, comparison) => {
+        const p = emojiConvertToTofu(primary);
+        const c = emojiConvertToTofu(comparison);
         const td = new textDiff(); 
-        const textDiffMain = td.main(primary, comparison); 
+        const textDiffMain = td.main(p, c); 
         const tdHtml = td.prettyHtml(textDiffMain); 
         return tdHtml
       })
+    
+    const emojiConvertToTofu = ((text) => {
+        const regex = emojiRegex();
+
+        let t = text;
+        let match;
+        while (match = regex.exec(text)) {
+            const emoji = match[0];
+            t = t.replace(emoji, "□"); // convert to tofu
+        }
+
+        return t;
+    })
 
     return (
         <>
