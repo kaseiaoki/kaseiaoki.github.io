@@ -11,7 +11,6 @@ const Buffer = require('buffer').Buffer;
 const emojiRegex = require('emoji-regex/RGI_Emoji');
 export default function Diff() {
     const router = useRouter();
-    console.log(router.query.a, router.query);
     const [textA, textValueA] = useState("")
     const [textB, textValueB] = useState("")
 
