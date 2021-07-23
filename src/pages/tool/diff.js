@@ -50,7 +50,7 @@ export default function Diff() {
     const share = (function () {
             const compressedA = compress(textA)
             const compressedB = compress(textB)
-            history.replaceState('','',"diff?a=" + encode(ab2str(compressedA, "base64")) + "&b=" + encode(ab2str(compressedB, "base64")))
+            history.replaceState('','','diff?a=' + encode(ab2str(compressedA, "base64")) + '&b=' + encode(ab2str(compressedB, "base64")))
             navigator.clipboard.writeText(location.href);
         }
     )
@@ -90,7 +90,7 @@ export default function Diff() {
                 </div>
             </div>
             <div className="buttons">
-                <button className="button is-info is-medium is-outlined" onClick={() => (textValueA("") , textValueB(""))}>Reset</button>
+                <button className="button is-info is-medium is-outlined" onClick={() => (textValueA("") , textValueB(""), history.replaceState('','','diff'))}>Reset</button>
                 <button className="button is-link is-medium is-outlined" onClick={() => (share())}>Copy this diff's share link</button>
             </div>
             <div className="columns mt-4">
