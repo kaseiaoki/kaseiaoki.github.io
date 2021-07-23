@@ -1,13 +1,22 @@
+import { useRouter } from 'next/router';
 import { useState } from "react";
-const textDiff = require('text-diff');
+import {encode, decode} from 'url-safe-base64'
+
 const diff = require('diff');
+const rawinflate = require('zlibjs/bin/rawinflate.min.js').Zlib
+const rawdeflate = require('zlibjs/bin/rawdeflate.min.js').Zlib
+const ab2str = require('arraybuffer-to-string')
+const Buffer = require('buffer').Buffer;
 
 const emojiRegex = require('emoji-regex/RGI_Emoji');
 export default function Diff() {
+    const router = useRouter();
+    console.log(router.query.a, router.query);
     const [textA, textValueA] = useState("")
     const [textB, textValueB] = useState("")
 
     const diffStates = ((primary, comparison) => {
+        
         const p = emojiConvertToTofu(primary);
         const c = emojiConvertToTofu(comparison);
         // const p = primary;
@@ -25,6 +34,29 @@ export default function Diff() {
           return text
       })
     
+    const compress = (function (val) {
+        const encoder = new TextEncoder()
+        const encoded = encoder.encode(val)
+        const compressed = new rawdeflate.RawDeflate(encoded).compress()
+        return compressed;
+    })
+
+    const decompress = (function (compressed) {
+        const buffer = Buffer.from(decode(compressed), 'base64')     
+        const inflate = new rawinflate.RawInflate(buffer);
+        const decompress = inflate.decompress();
+        return ab2str(decompress);
+    })
+
+    const share = (function () {
+            const compressedA = compress(textA)
+            const compressedB = compress(textB)
+            history.replaceState('','',"diff?a=" + encode(ab2str(compressedA, "base64")) + "&b=" + encode(ab2str(compressedB, "base64")))
+            navigator.clipboard.writeText(location.href);
+        }
+    )
+    
+
     const emojiConvertToTofu = ((text) => {
         const regex = emojiRegex();
 
@@ -52,13 +84,16 @@ export default function Diff() {
         <section style={{ padding: '1vw',height: '100vw' }}>
             <div className="columns">
                 <div className="column">
-                    <textarea value={textA} onChange={(e) => textValueA(e.target.value)} className="textarea is-medium" placeholder="e.g. Hello world"></textarea>
+                    <textarea value={textA === "" && router.query.a ? decompress(router.query.a) : textA} onChange={(e) => textValueA(e.target.value)} className="textarea is-medium" placeholder="e.g. Hello world"></textarea>
                 </div>
                 <div className="column">
-                    <textarea value={textB} onChange={(e) => textValueB(e.target.value)} className="textarea is-medium" placeholder="e.g. How low, world"></textarea>
+                    <textarea value={textB === "" && router.query.b ? decompress(router.query.b) : textB} onChange={(e) => textValueB(e.target.value)} className="textarea is-medium" placeholder="e.g. How low, world"></textarea>
                 </div>
             </div>
-            <button className="button is-info is-medium is-outlined" onClick={() => (textValueA("") , textValueB(""))}>Reset</button>
+            <div className="buttons">
+                <button className="button is-info is-medium is-outlined" onClick={() => (textValueA("") , textValueB(""))}>Reset</button>
+                <button className="button is-link is-medium is-outlined" onClick={() => (share())}>Copy this diff's share link</button>
+            </div>
             <div className="columns mt-4">
                 <div className="column">
                     <div className="block ml-3">
