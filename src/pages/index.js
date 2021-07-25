@@ -5,7 +5,7 @@ const Index = () => {
       <section>
         <div className="hero is-fullheight">
           <div className="hero-body">
-          <div class="container has-text-centered">
+            <div class="container has-text-centered">
               <h1 className="is-size-1 is-family-sans-serif title">Kaisei Aoki</h1>
               <img src={profilePic.src} 
                         alt="Kasei Aoki"

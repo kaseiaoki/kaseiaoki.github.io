@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Hero from '../../components/hero'
 import SeoMeta from '../../foundations/seo-meta'
 import { useState, useEffect  } from "react"
 import { decompress, share } from "../../lib/diff-share"
@@ -9,6 +10,7 @@ const emojiRegex = require('emoji-regex/RGI_Emoji');
 
 export default function Diff() {
     const pageTitle = "Diff checker"
+    const desc = "Show the difference between two sentences that you input "
 
     const router = useRouter();
     const [textA, textValueA] = useState("")
@@ -57,7 +59,7 @@ export default function Diff() {
         <>
         <SeoMeta
             pageTitle = { pageTitle }
-            pageDescription = { "Displays the difference between strings" }
+            pageDescription = { desc }
             pagePath = {"/tool/diff"}
             // pageImg = {}
             // pageImgWidth = {}
@@ -65,15 +67,7 @@ export default function Diff() {
             // pageCanonical = {}
             // pageFor = {}
          />
-        <section>
-            <div className="hero">
-            <div className="hero-body">
-            <div className="container has-text-centered">
-                <h1 className="is-size-1 is-family-sans-serif title">Diff checker</h1>
-                </div>
-            </div>
-            </div>
-        </section>
+        <Hero pageTitle = { pageTitle } subTitle = { desc } />
         <section style={{ padding: '1vw',height: '100vw' }}>
             <div className="columns">
                 <div className="column">
@@ -89,13 +83,13 @@ export default function Diff() {
             </div>
             <div className="columns mt-4">
                 <div className="column">
-                    <div className="block ml-3 is-half">
-                        <div className="box" dangerouslySetInnerHTML={{ __html: diffStates(textA, textB)}} />
+                    <div className="block box is-half">
+                        <div className="" dangerouslySetInnerHTML={{ __html: diffStates(textA, textB)}} />
                     </div>
                 </div>
                 <div className="column">
-                    <div className="block ml-3 is-half">
-                        <div className="box" dangerouslySetInnerHTML={{ __html: diffStates(textB, textA)}} />
+                    <div className="block ml-1 box is-half">
+                        <div className="" dangerouslySetInnerHTML={{ __html: diffStates(textB, textA)}} />
                     </div>
                 </div>
             </div>
