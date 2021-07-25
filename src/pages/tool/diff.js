@@ -88,7 +88,7 @@ export default function Diff() {
                     </div>
                 </div>
                 <div className="column">
-                    <div className="block ml-1 box is-half">
+                    <div className="block box is-half">
                         <div className="" dangerouslySetInnerHTML={{ __html: diffStates(textB, textA)}} />
                     </div>
                 </div>
