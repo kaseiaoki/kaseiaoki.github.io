@@ -6,6 +6,7 @@
   "dependencies": {
     "Buffer": "0.0.0",
     "arraybuffer-to-string": "^1.0.2",
+    "buffer": "^6.0.3",
     "bulma": "^0.9.1",
     "diff": "^5.0.0",
     "emoji-regex": "^9.2.2",
@@ -13,6 +14,7 @@
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "string-strip-html": "^4.4.1",
     "string-to-arraybuffer": "^1.0.2",
     "text-diff": "^1.0.1",
     "text-encoding": "^0.7.0",

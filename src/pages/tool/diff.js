@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import SeoMeta from '../../foundations/seo-meta'
 import { useState, useEffect  } from "react"
 import { decompress, share } from "../../lib/diff-share"
 
@@ -7,6 +8,8 @@ const diff = require('diff');
 const emojiRegex = require('emoji-regex/RGI_Emoji');
 
 export default function Diff() {
+    const pageTitle = "Diff checker"
+
     const router = useRouter();
     const [textA, textValueA] = useState("")
     const [textB, textValueB] = useState("")
@@ -52,6 +55,16 @@ export default function Diff() {
 
     return (
         <>
+        <SeoMeta
+            pageTitle = { pageTitle }
+            pageDescription = { "Displays the difference between strings" }
+            pagePath = {"/tool/diff"}
+            // pageImg = {}
+            // pageImgWidth = {}
+            // pageImgHeight = {}
+            // pageCanonical = {}
+            // pageFor = {}
+         />
         <section>
             <div className="hero">
             <div className="hero-body">
@@ -76,13 +89,13 @@ export default function Diff() {
             </div>
             <div className="columns mt-4">
                 <div className="column">
-                    <div className="block ml-3">
-                        <div dangerouslySetInnerHTML={{ __html: diffStates(textA, textB)}} />
+                    <div className="block ml-3 is-half">
+                        <div className="box" dangerouslySetInnerHTML={{ __html: diffStates(textA, textB)}} />
                     </div>
                 </div>
                 <div className="column">
-                    <div className="block ml-3">
-                        <div dangerouslySetInnerHTML={{ __html: diffStates(textB, textA)}} />
+                    <div className="block ml-3 is-half">
+                        <div className="box" dangerouslySetInnerHTML={{ __html: diffStates(textB, textA)}} />
                     </div>
                 </div>
             </div>
