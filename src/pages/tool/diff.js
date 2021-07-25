@@ -10,7 +10,7 @@ const emojiRegex = require('emoji-regex/RGI_Emoji');
 
 export default function Diff() {
     const pageTitle = "Diff checker"
-    const desc = "Show the difference between two sentences that you input "
+    const desc = "Show the difference between two sentences you have entered"
 
     const router = useRouter();
     const [textA, textValueA] = useState("")
