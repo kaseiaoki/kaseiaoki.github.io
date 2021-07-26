@@ -26,6 +26,7 @@ const SeoMeta = ({
   return (
     <Head>
       <title>{title}</title>
+      <meta name="google-site-verification" content="y8TLNy0JO5mapGdcr9-0qvTtJgKvR4yTeGImAu30EKQ" />
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <meta name="description" content={description} />
       <meta property="og:url" content={url} />
