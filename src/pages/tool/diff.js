@@ -61,11 +61,6 @@ export default function Diff() {
             pageTitle = { pageTitle }
             pageDescription = { desc }
             pagePath = {"/tool/diff"}
-            // pageImg = {}
-            // pageImgWidth = {}
-            // pageImgHeight = {}
-            // pageCanonical = {}
-            // pageFor = {}
          />
         <Hero pageTitle = { pageTitle } subTitle = { desc } />
         <section style={{ padding: '1vw',height: '100vw' }}>

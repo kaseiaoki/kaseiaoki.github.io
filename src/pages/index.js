@@ -1,11 +1,18 @@
 import profilePic from '../../public/icon.png'
+import SeoMeta from '../foundations/seo-meta'
 const Index = () => {
+  const pageTitle = "";
   return (
     <>
       <section>
+      <SeoMeta
+            pageTitle = { pageTitle }
+            pageDescription = { "青木開生(kaisei aoki)のページ" }
+            pagePath = {"/"}
+         />
         <div className="hero is-fullheight">
           <div className="hero-body">
-            <div class="container has-text-centered">
+            <div className="container has-text-centered">
               <h1 className="is-size-1 is-family-sans-serif title">Kaisei Aoki</h1>
               <img src={profilePic.src} 
                         alt="Kasei Aoki"

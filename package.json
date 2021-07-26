@@ -21,7 +21,9 @@
     "url-safe-base64": "^1.1.1",
     "zlibjs": "^0.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "next-sitemap": "^1.6.140"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

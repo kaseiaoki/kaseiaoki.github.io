@@ -13,8 +13,8 @@ const SeoMeta = ({
   pageCanonical,
   pageFor
 }) => {
-  const defaultTitle = 'Kaisei Aoki\'s page | 青木開生のページ'
-  const defaultDescription = 'Kaisei Aoki\'s page : 青木開生のページ'
+  const defaultTitle = 'Kaisei Aoki\'s page'
+  const defaultDescription = 'Kaisei Aoki\'s page'
   const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle
   const description = stripHtml(pageDescription ? pageDescription : defaultDescription)
   const url = pageCanonical ?? pagePath 
@@ -26,7 +26,6 @@ const SeoMeta = ({
   return (
     <Head>
       <title>{title}</title>
-      lang= ja
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <meta name="description" content={description} />
       <meta property="og:url" content={url} />
