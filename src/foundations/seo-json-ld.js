@@ -20,7 +20,6 @@ export default function JsonLDWebPageSchema(title, url, desc, image, defaultTitl
          }
          return JSON.stringify(json);
         })
-    console.log(jsonLd)
 	return (
 		<script
             key="json-ld"

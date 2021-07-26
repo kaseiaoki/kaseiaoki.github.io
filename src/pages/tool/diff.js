@@ -3,9 +3,11 @@ import Hero from '../../components/hero'
 import SeoMeta from '../../foundations/seo-meta'
 import { useState, useEffect  } from "react"
 import { decompress, share } from "../../lib/diff-share"
+import SideMenu from '../../components/side-menu'
 
 
 const diff = require('diff');
+const stripHtml = require("string-strip-html");
 const emojiRegex = require('emoji-regex/RGI_Emoji');
 
 export default function Diff() {
@@ -25,8 +27,8 @@ export default function Diff() {
 
     const diffStates = ((primary, comparison) => {
         
-        const p = emojiConvertToTofu(primary);
-        const c = emojiConvertToTofu(comparison);
+        const p = stripHtml(emojiConvertToTofu(primary));
+        const c = stripHtml(emojiConvertToTofu(comparison));
         // const p = primary;
         // const c = comparison;
         const td = diff.diffChars(p, c); 

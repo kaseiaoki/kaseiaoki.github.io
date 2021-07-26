@@ -1,4 +1,5 @@
 import profilePic from '../../public/icon.png'
+// import SideMenu from '../components/side-menu'
 import SeoMeta from '../foundations/seo-meta'
 const Index = () => {
   const pageTitle = "";
@@ -19,7 +20,8 @@ const Index = () => {
                         width={256}
                         height={256} 
                         className="image is-128x128 shake me" />
-              </div>
+            </div>
+            {/* <SideMenu /> */}
           </div>
         </div>
       </section>
