@@ -7,7 +7,6 @@ import SideMenu from '../../components/side-menu'
 import {encode} from 'html-entities';
 
 const diff = require('diff');
-const emojiRegex = require('emoji-regex/RGI_Emoji');
 
 export default function Diff() {
     const pageTitle = "Compare text diff"
@@ -25,14 +24,10 @@ export default function Diff() {
     },[router.query])
 
     const diffStates = ((primary, comparison) => {
-        
         const p = encode(primary);
         const c = encode(comparison);
-        // const p = primary;
-        // const c = comparison;
         const td = diff.diffChars(p, c); 
-        // const textDiffMain = td.main(p, c); 
-        // const tdHtml = td.prettyHtml(textDiffMain); 
+        
         let text = "";
         td.forEach(function(part){
             text += part.added ? '<ins>' + part.value + '</ins>' :

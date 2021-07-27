@@ -9,7 +9,6 @@
     "buffer": "^6.0.3",
     "bulma": "^0.9.1",
     "diff": "^5.0.0",
-    "emoji-regex": "^9.2.2",
     "html-entities": "^2.3.2",
     "next": "latest",
     "node-sass": "^5.0.0",
