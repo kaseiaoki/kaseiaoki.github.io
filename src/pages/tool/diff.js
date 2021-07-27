@@ -4,10 +4,9 @@ import SeoMeta from '../../foundations/seo-meta'
 import { useState, useEffect  } from "react"
 import { decompress, share } from "../../lib/diff-share"
 import SideMenu from '../../components/side-menu'
-
+import {encode} from 'html-entities';
 
 const diff = require('diff');
-const stripHtml = require("string-strip-html");
 const emojiRegex = require('emoji-regex/RGI_Emoji');
 
 export default function Diff() {
@@ -27,8 +26,8 @@ export default function Diff() {
 
     const diffStates = ((primary, comparison) => {
         
-        const p = stripHtml(emojiConvertToTofu(primary));
-        const c = stripHtml(emojiConvertToTofu(comparison));
+        const p = encode(primary);
+        const c = encode(comparison);
         // const p = primary;
         // const c = comparison;
         const td = diff.diffChars(p, c); 
@@ -43,19 +42,6 @@ export default function Diff() {
           });
           return text
       })
-
-    const emojiConvertToTofu = ((text) => {
-        const regex = emojiRegex();
-
-        let t = text;
-        let match;
-        while (match = regex.exec(text)) {
-            const emoji = match[0];
-            t = t.replace(emoji, "□"); // convert to tofu
-        }
-
-        return t;
-    })
 
     return (
         <>
