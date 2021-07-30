@@ -31,6 +31,14 @@
     "start": "next start",
     "export": "next export"
   },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "printWidth": 100
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaseiaoki/kaseiaoki.github.io.git"
