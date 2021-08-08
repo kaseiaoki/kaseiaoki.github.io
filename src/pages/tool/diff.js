@@ -95,6 +95,18 @@ export default function Diff() {
           white-space: pre;
           overflow-wrap: normal;
           overflow-x: auto;
+          span {
+             font-size: 1.5em;   
+          }
+          ins {
+             background-color: hsl(141, 53%, 53%, 55%);
+             font-size: 1.6em;
+             text-decoration: none;
+          }
+          del {
+             background-color: hsl(348, 100%, 61%, 55%);
+             font-size: 1.6em;
+          }
         `}
       </style>
     </>
