@@ -16,7 +16,12 @@ export function john(json, filter) {
         result = result
     }
   }
-  return result
+  try {
+    JSON.stringify(result)
+  } catch (e) {
+    return result
+  }
+  return JSON.stringify(result, null, '\t')
 }
 
 const filterParse = function name(filter) {
@@ -28,7 +33,6 @@ const period = function name(json, filter) {
   const array = filter.split('.')
   let value = json
   for (let key of array) {
-    console.log(json[0], key)
     value = json[key]
   }
   return value
