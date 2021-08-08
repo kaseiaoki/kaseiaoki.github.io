@@ -73,7 +73,7 @@ export default function Diff() {
             className='button is-link is-medium is-outlined'
             onClick={() => share(textA, textB)}
           >
-            Copy this diff's share link
+            Copy this diff`&aposs share link
           </button>
         </div>
         <div className='columns mt-4'>

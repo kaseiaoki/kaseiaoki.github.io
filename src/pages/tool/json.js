@@ -3,7 +3,7 @@ import SeoMeta from '../../foundations/seo-meta'
 import { useState } from 'react'
 import { john } from '../../lib/john'
 
-export default function json() {
+export default function Json() {
   const pageTitle = 'JSON processor'
   const desc = 'JSON processor..?'
 
