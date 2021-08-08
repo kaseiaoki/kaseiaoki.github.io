@@ -5,15 +5,15 @@ export function john(json, filter) {
   const filterArray = filterParse(filter)
   let result = json
   for (let f of filterArray) {
-    console.log(f.match(/./) !== null)
     switch (true) {
       case f.match(/./) !== null:
+        if (f === '.' || !result) break
         console.log('priod')
-        result = period(json, f)
+        result = period(result, f)
         break
       default:
         console.log('default')
-        result = result
+        break
     }
   }
   try {
@@ -32,8 +32,11 @@ const filterParse = function name(filter) {
 const period = function name(json, filter) {
   const array = filter.split('.')
   let value = json
+  console.log(value, json, filter)
+  if (value == null) return null
   for (let key of array) {
-    value = json[key]
+    if (!value[key]) continue
+    value = value[key]
   }
   return value
 }
