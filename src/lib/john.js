@@ -6,16 +6,26 @@ export function john(json, filter) {
   let result = json
 
   for (let f of filterArray) {
-    console.log(f.match(/uniq/))
     switch (true) {
       case f.match(/\./) !== null:
         if (f === '.' || !result) break
         console.log('priod')
         result = period(result, f)
         break
+      case f.match(/sortBy/) !== null:
+        console.log('sortBy')
+        result = takeBrackets(f) ? _.sortBy(takeBrackets(f), result) : result
+        break
+      case f.match(/orderByDesc/) !== null:
+        console.log('orderByDesc')
+        result = takeBrackets(f) ? _.orderBy(takeBrackets(f), 'desc', result) : result
+        break
+      case f.match(/orderByAsc/) !== null:
+        console.log('orderByAsc')
+        result = takeBrackets(f) ? _.orderBy(takeBrackets(f), 'asc', result) : result
+        break
       case f.match(/unique/) !== null:
         console.log('unique')
-        console.log(result, takeBrackets(f), _.uniqBy('color', result))
         result = takeBrackets(f) ? _.uniqBy(takeBrackets(f), result) : _.uniq(result)
         break
       default:
