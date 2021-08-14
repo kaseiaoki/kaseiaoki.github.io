@@ -3,7 +3,6 @@ import Link from 'next/link'
 const xss = require('xss')
 
 const ResultBlock = ({ result }) => {
-  console.log(result)
   return (
     <>
       <div className='block box'>
