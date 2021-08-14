@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Hero from '../../components/hero'
+import ResultBlock from '../../components/result-block'
 import SeoMeta from '../../foundations/seo-meta'
 import { useState, useEffect } from 'react'
 import { decompress, share } from '../../lib/diff-share'
@@ -77,15 +78,11 @@ export default function Diff() {
           </button>
         </div>
         <div className='columns mt-4'>
-          <div className='column'>
-            <div className='block box is-half'>
-              <div className='' dangerouslySetInnerHTML={{ __html: diffStates(textA, textB) }} />
-            </div>
+          <div className='column is-half'>
+            <ResultBlock result={diffStates(textA, textB)} />
           </div>
-          <div className='column'>
-            <div className='block box is-half'>
-              <div className='' dangerouslySetInnerHTML={{ __html: diffStates(textB, textA) }} />
-            </div>
+          <div className='column is-half'>
+            <ResultBlock result={diffStates(textA, textB)} />
           </div>
         </div>
       </section>
@@ -95,18 +92,7 @@ export default function Diff() {
           white-space: pre;
           overflow-wrap: normal;
           overflow-x: auto;
-          span {
-             font-size: 1.5em;   
-          }
-          ins {
-             background-color: hsl(141, 53%, 53%, 55%);
-             font-size: 1.6em;
-             text-decoration: none;
-          }
-          del {
-             background-color: hsl(348, 100%, 61%, 55%);
-             font-size: 1.6em;
-          }
+         }
         `}
       </style>
     </>
