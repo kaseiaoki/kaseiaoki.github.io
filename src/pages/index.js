@@ -14,7 +14,7 @@ const Index = () => {
         <div className='hero is-fullheight'>
           <div className='hero-body'>
             <div className='container has-text-centered'>
-              <h1 className='is-size-1 is-family-sans-serif title'>Kaisei Aoki</h1>
+              <h1 className='is-size-1 is-family-sans-serif title'>Kaisei AOKI</h1>
               <img
                 src={profilePic.src}
                 alt='Kasei Aoki'
